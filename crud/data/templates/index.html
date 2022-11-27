@@ -1,0 +1,22 @@
+{% extends 'layout/app.html' %}
+{% block cs %} {% endblock %}
+
+{% block title %} home {% endblock %}
+
+{% block first %}
+
+<form action="" method="post" novalidate>
+ {% csrf_token %}
+  {% if fm.non_field_errors %}
+   {% for error in fm.non_field_errors %}
+    <p class="er">{{error}}</p>
+   {% endfor %}
+  {% endif %}
+ {% for fm in fm %}
+  {{fm.label_tag}} {{fm}} {{fm.errors|striptags}} <br><br>
+ {% endfor %}
+ <input type="submit" value="Submit">
+</form>
+{% endblock %}
+{% block second %} {% endblock %}
+{% block js %} {% endblock %}
